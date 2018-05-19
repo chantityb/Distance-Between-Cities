@@ -1,0 +1,29 @@
+body {
+	background: url(road.jpg) center center fixed;
+	background-size: cover;
+	color: #fff;
+	font-family: 'Arvo', seriff;
+	
+}
+
+/*jumbotron*/
+.jumbotron {
+	background-color: transparent;
+	margin: 0;
+	padding: 10px;
+}
+
+.jumbotron h1 {
+	letter-spacing: 2.5px;
+}
+
+.jumbotron h1, .jumbotron p {
+	text-align: center;
+}
+
+/*Map*/
+#googleMap {
+	width: 100%;
+	height: 200px;
+	margin: 10px auto;
+}
