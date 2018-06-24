@@ -22,36 +22,35 @@
 
 //define calcRoute function
 function calcRoute(){
-	//create request
-	var request = {
-		origin: document.getElementById("from").value,
-		destination: document.getElementById("to").value,
-		travelMode: google.maps.TravelMode.DRIVING,
-	//WALKING, BYCYCLING, TRANSIT
-		unitSystem: google.maps.UnitSystem.IMPERIAL	
-	}
+    //create request
+    var request = {
+        origin: document.getElementById("from").value,
+        destination: document.getElementById("to").value,
+        travelMode: google.maps.TravelMode.DRIVING, //WALKING, BYCYCLING, TRANSIT
+        unitSystem: google.maps.UnitSystem.IMPERIAL
+    }
 
-	//pass the request to the route method
-	directionsService.route(request, function(result, status){
-		//if status ok
-		if(status == google.maps.DirectionsStatus.OK){
+    //pass the request to the route method
+    directionsService.route(request, function(result, status){
+    if(status == google.maps.DirectionsStatus.OK){
 
-			//Get distance and time
-			$("#output").html("<div class='alert-info'>From:" +document.getElementById("from").value+ ".<br />To:" +document.getElementById("to").value+ ".<br /> Driving distance: " +result.routes[0].legs[0].distance.text+ ".<br/>Duration:" +result.routes[0].legs[0].duration.text+ ".</div>");
-			
-			//display route
-			directionsDisplay.setDirections(result);
-		} else{
-			//delete route from map
-			directionsDisplay.setDirections({routes: []});
-			//center map in Louisville
-			map.setCenter(myLatLng);
-			//show error message
-			$("#output").html("<div class='alert-danger'>Could not retrieve driving distance.</div>");
-		}
-	});
+        //Get distance and time
+        $("#output").html("<div class='alert-info'>From: "+document.getElementById("from").value+".<br />To: "+document.getElementById("to").value+".<br /> Driving distance: "+result.routes[0].legs[0].distance.text+".<br />Duration: "+result.routes[0].legs[0].duration.text+".</div>");
+
+        //display route
+        directionsDisplay.setDirections(result);
+    }else{
+        //delete route from map
+        directionsDisplay.setDirections({routes: []});
+        //center map in London
+        map.setCenter(myLatLng);
+        
+        //show error message
+        $("#output").html("<div class='alert-danger'>Could not retrieve driving distance.</div>");
+    }
+    });
+
 }
-
 
 //create autocomplete objects for all inputs
 var options = {
